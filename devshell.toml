@@ -1,0 +1,37 @@
+[devshell]
+name = "flake-utils-plus"
+packages = [
+  "fd",
+  "nixpkgs-fmt",
+]
+
+[[commands]]
+name = "fmt"
+command = "nixpkgs-fmt ."
+category = "formatters"
+
+[[commands]]
+name = "evalnix"
+command = "fd --extension nix --exec nix-instantiate --parse --quiet {} >/dev/null"
+category = "checks"
+
+[[commands]]
+name = "check-fully-featured-example"
+command = """
+  cd ./examples/fully-featured \
+  && nix flake check \
+  && nix build .#nixosConfigurations.Morty.config.system.build.toplevel
+"""
+category = "checks"
+
+[[commands]]
+name = "check-somewhat-realistic-example"
+command = """
+  cd ./examples/somewhat-realistic \
+  && nix flake check \
+  && nix build .#nixosConfigurations.HostnameOne.config.system.build.toplevel \
+  && nix build .#nixosConfigurations.HostnameTwo.config.system.build.toplevel
+  # TODO: fix darwinConfiguration build
+  # && nix build .#darwinConfigurations.HostnameThree.config.system.build.toplevel
+"""
+category = "checks"

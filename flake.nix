@@ -8,6 +8,8 @@
 
       nixosModules.saneFlakeDefaults = import ./modules/saneFlakeDefaults.nix;
 
+      devShell.x86_64-linux = import ./shell.nix { system = "x86_64-linux"; };
+
       lib = flake-utils.lib // {
 
         repl = ./repl.nix;
