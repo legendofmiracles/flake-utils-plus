@@ -7,7 +7,7 @@ packages = [
 
 [[commands]]
 name = "fmt"
-command = "nixpkgs-fmt ."
+command = "nixpkgs-fmt ${@} ."
 category = "formatters"
 
 [[commands]]
