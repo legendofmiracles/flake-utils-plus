@@ -31,7 +31,5 @@ command = """
   && nix flake check \
   && nix build .#nixosConfigurations.HostnameOne.config.system.build.toplevel \
   && nix build .#nixosConfigurations.HostnameTwo.config.system.build.toplevel
-  # TODO: fix darwinConfiguration build
-  # && nix build .#darwinConfigurations.HostnameThree.config.system.build.toplevel
 """
 category = "checks"
